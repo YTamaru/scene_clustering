@@ -2,6 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+import argparse
 
 def imshow(img):
     if img.ndim == 2:
@@ -43,6 +44,15 @@ def cutmix(BG_IMG, FG_IMG):
     return result
 
 if __name__ == '__main__':
-    FG_IMG = "/home/tamaru/scene_categorize/main/data/dog.jpg"
-    BG_IMG = "/home/tamaru/scene_categorize/main/data/lab_table_4_img_000230.png"
-    cv2.imwrite("/home/tamaru/scene_categorize/main/data", cutmix(BG_IMG, FG_IMG))
+    parser = argparse.ArgumentParser(description="for cutmix")
+
+    parser.add_argument("save_dir", help="save directory")
+    parser.add_argument("FG_IMG", help="foreground image path")
+    parser.add_argument("BG_IMG", help="background image path")
+
+    args = parser.parse_args()
+
+    # FG_IMG = "/home/tamaru/scene_categorize/main/data/dog.jpg"
+    # BG_IMG = "/home/tamaru/scene_categorize/main/data/lab_table_4_img_000230.png"
+    # save_dir = "/home/tamaru/scene_categorize/main/data"
+    cv2.imwrite(args.save_dir, cutmix(args.BG_IMG, args.FG_IMG))
