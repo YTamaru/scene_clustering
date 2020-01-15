@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
-IMROOT="/home/tamaru/scene_categorize/main/data/stairs_frames/denkisogokan/denkisogokan_stairs/"
-bgr = cv2.imread(IMROOT + "denkisogokan_stairs_0_img_000010.png")
+IMROOT="/home/tamaru/scene_categorize/main/data/"
+bgr = cv2.imread(IMROOT + "dog.jpg")
 h, w = bgr.shape[:2]
 mask = np.zeros((h,w), dtype = np.uint8)
 bgdModel = np.zeros((1,65),np.float64)

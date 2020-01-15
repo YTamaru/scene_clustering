@@ -2,6 +2,7 @@ import os
 import csv
 import time
 from glob import glob
+import argparse
 
 def makelist(file_path, video_frames):
     #fileだったときの処理を記述
@@ -37,11 +38,17 @@ def recursive_file_check(path, video_frames, csv_file):
     
     writecsv(csv_file, video_frames)
 
-
 if __name__ == '__main__': 
-    path = '/home/tamaru/scene_categorize/main/data/insta_resized'
-    csv_file = '/home/tamaru/scene_categorize/main/data/resized_data.csv'
-    video_frames = []
-    recursive_file_check(path, video_frames, csv_file)
+    parser = argparse.ArgumentParser(description="for listing files")
+
+    parser.add_argument("path", help="images path")
+    parser.add_argument("csv", help="create csv file in the path")
+
+    args = parser.parse_args()
+    
+    # path = '/home/tamaru/scene_categorize/main/data/insta_resized'
+    # csv_file = '/home/tamaru/scene_categorize/main/data/resized_data.csv'
+    frames = []
+    recursive_file_check(args.path, frames, args.csv)
 
 
