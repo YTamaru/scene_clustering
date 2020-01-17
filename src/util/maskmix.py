@@ -12,7 +12,7 @@ def imshow(img):
     plt.axis("off")
     plt.show()
 
-def cutmix(BG_IMG, FG_IMG):
+def maskmix(BG_IMG, FG_IMG):
     background = cv2.imread(BG_IMG)
 
     foreground = cv2.imread(FG_IMG)
@@ -43,6 +43,7 @@ def cutmix(BG_IMG, FG_IMG):
     result = np.where(np.expand_dims(mask==255,-1), foreground, roi)
     return result
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="for cutmix")
 
@@ -55,4 +56,4 @@ if __name__ == '__main__':
     # FG_IMG = "/home/tamaru/scene_categorize/main/data/dog.jpg"
     # BG_IMG = "/home/tamaru/scene_categorize/main/data/lab_table_4_img_000230.png"
     # save_dir = "/home/tamaru/scene_categorize/main/data"
-    cv2.imwrite(args.save_dir, cutmix(args.BG_IMG, args.FG_IMG))
+    cv2.imwrite(args.save_dir, maskmix(args.BG_IMG, args.FG_IMG))
