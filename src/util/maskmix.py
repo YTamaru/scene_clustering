@@ -46,16 +46,16 @@ def maskmix(BG_IMG, FG_IMG):
 
     mask_pil = cv2pil(mask)
     mask_pil = ImageOps.invert(mask_pil)
-    mask_im = mask_pil.resize(foreground.size).convert("L")
+    mask_im = mask_pil.resize(FG.size).convert("L")
 
-    back_im = background.copy()
+    back_im = BG.copy()
     #マスク画像の左上がx,yとなるので，取りうる値を(-64,128)でランダム
     x, y = random.randint(-64,128), random.randint(-64,128)
     #画像の縮小を0.5~1.0で行う
     rate = np.random.rand()*0.5 + 0.5
     #画像の回転を360度の範囲でランダムに行う
     rotate = random.randint(0,360)
-    foreground_ = foreground.resize((int(foreground.width*rate), int(foreground.height*rate))).rotate(rotate)
+    foreground_ = FG.resize((int(FG.width*rate), int(FG.height*rate))).rotate(rotate)
     mask_im_ = mask_im.resize((int(mask_im.width*rate), int(mask_im.height*rate))).rotate(rotate)
     back_im.paste(foreground_, (x, y), mask_im_)
     return back_im
