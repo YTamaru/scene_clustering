@@ -50,17 +50,20 @@ def video_2_frames(VIDEOS_DIR, TARGET_IMAGES_DIR):
     for file in files:
         cap = cv2.VideoCapture(file)
         fps = round(cap.get(cv2.CAP_PROP_FPS))
+        print("FPS:", fps)
 
         i = 0
         while(cap.isOpened()):
             flag, frame = cap.read()  # Capture frame-by-frame
             if flag == False:
                 break  # A frame is not left
-                # 1秒毎にフレームを抽出
-            if(i%fps==0):
+                # 1秒毎にフレームを抽出 fps
+            if(i%(fps/10)==0 and frame is not None):
                 cv2.imwrite(TARGET_IMAGES_DIR+'/'+os.path.basename(TARGET_IMAGES_DIR)+'_'+str(num)+'_'+image_file_temp % str(i).zfill(6), frame)  # Save a frame
                 i += 1
                 print('Save', TARGET_IMAGES_DIR+'/'+os.path.basename(TARGET_IMAGES_DIR)+'_'+str(num)+'_'+image_file_temp % str(i).zfill(6))
+            elif frame is None:
+                print("Error")
             else:
                 i += 1
         cap.release()  # When everything done, release the capture
@@ -94,6 +97,6 @@ def recursive_file_check(VIDEOS_DIR, TARGET_IMAGES_DIR, itenum):
     #     video_2_frames(path, TARGET_IMAGES_DIR)
 
 if __name__ == "__main__":
-    data_dir_path = 'home/tamaru/scene_categorize/main/data/stairs_mp4'
-    save_dir_path = 'home/tamaru/scene_categorize/main/data/stairs_frames'
+    data_dir_path = '/home/tamaru/scene_categorize/main/data/insta_mp4/professorroom'
+    save_dir_path = '/home/tamaru/scene_categorize/main/data/insta_frames/professorroom'
     recursive_file_check(data_dir_path, save_dir_path, 0)

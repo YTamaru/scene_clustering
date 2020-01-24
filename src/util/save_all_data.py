@@ -87,9 +87,9 @@ def writecsv(csv_file, vid_data):
             csv_writer.writerow(r)
 
 if __name__ == "__main__":
-    data_dir_path = '/home/tamaru/scene_categorize/main/data/stairs_mp4'
-    save_dir_path = '/home/tamaru/scene_categorize/main/data/stairs_frames'
-    csv_file = '/home/tamaru/scene_categorize/main/data/stairs_frames_data.csv'
+    data_dir_path = 'home/tamaru/scene_categorize/main/data/insta_mp4/professor-room'
+    save_dir_path = 'home/tamaru/scene_categorize/main/data/insta_frames/professor-room'
+    csv_file = '/home/tamaru/scene_categorize/main/data/professor-room.csv'
     vid_data = []
     recursive_file_check(data_dir_path, save_dir_path, 0, vid_data)
     writecsv(csv_file, vid_data)

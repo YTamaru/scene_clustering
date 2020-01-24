@@ -108,16 +108,17 @@ def add_parallel_light(image, light_position=None, direction=None, max_brightnes
                                         min_brightness=min_brightness,
                                         mode=mode,
                                         linear_decay_rate=linear_decay_rate)
+    
     hsv[:, :, 2] = hsv[:, :, 2] * transparency + mask * (1 - transparency)
     frame = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
-    frame[frame > 255] = 255
-    frame = np.asarray(frame, dtype=np.uint8)
+    # frame[frame > 255] = 255
+    # frame = np.asarray(frame, dtype=np.uint8)
     return frame
 
 if __name__ == '__main__':
-    frame = add_parallel_light("/home/tamaru/scene_categorize/main/data/insta_cube/lab/lab_table/3/lab_table_4_img_000220.png")
+    frame = add_parallel_light("/home/tamaru/scene_categorize/main/data/example/lab_desk_3_img_000250.png", transparency=0.85)
     if frame is not None: 
         cv2.imshow("frame", frame)
-        cv2.imwrite("/home/tamaru/scene_categorize/main/data/add_paralell_light.png",frame)
+        cv2.imwrite("/home/tamaru/scene_categorize/main/data/example/add_light.png",frame)
     else:
         print("False")

@@ -58,6 +58,6 @@ def recursive_file_check(VIDEOS_DIR, TARGET_IMAGES_DIR, itenum):
     #     video_2_frames(path, TARGET_IMAGES_DIR)
 
 if __name__ == "__main__":
-    data_dir_path = '/home/tamaru/scene_categorize/main/data/stairs_frames'
-    save_dir_path = '/home/tamaru/scene_categorize/main/data/stairs_cubemap'
+    data_dir_path = '/home/tamaru/scene_categorize/main/data/insta_frames/professorroom'
+    save_dir_path = '/home/tamaru/scene_categorize/main/data/insta_cube/professorroom'
     recursive_file_check(data_dir_path, save_dir_path, 0)

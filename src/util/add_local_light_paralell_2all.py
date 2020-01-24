@@ -119,7 +119,7 @@ def add_parallel_light(image, light_position=None, direction=None, max_brightnes
     return frame
 
 def add_parallel_light_2all(DATA_DIR, TARGET_DIR, light_position=None, direction=None, max_brightness=255, min_brightness=0,
-                       mode="gaussian", linear_decay_rate=None, transparency=None):
+                       mode="gaussian", linear_decay_rate=None, transparency=0.80):
     """
     Add mask generated from parallel light to given image
     """
@@ -178,6 +178,6 @@ def recursive_file_check(DATA_DIR, TARGET_DIR, itenum):
                 break
 
 if __name__ == '__main__':
-    data_dir_path = '/home/tamaru/scene_categorize/main/data/insta_cube'
-    save_dir_path = '/home/tamaru/scene_categorize/main/data/light'
+    data_dir_path = '/home/tamaru/scene_categorize/main/data/dataset/train'
+    save_dir_path = '/home/tamaru/scene_categorize/main/data/dataset/light'
     recursive_file_check(data_dir_path, save_dir_path, 0)
