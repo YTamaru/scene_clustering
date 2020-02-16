@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import random
 from scipy.stats import norm
+import argparse
 
 def generate_parallel_light_mask(mask_size,
                                  position=None,
@@ -116,9 +117,14 @@ def add_parallel_light(image, light_position=None, direction=None, max_brightnes
     return frame
 
 if __name__ == '__main__':
-    frame = add_parallel_light("/home/tamaru/scene_categorize/main/data/example/lab_desk_3_img_000250.png", transparency=0.85)
+
+    parser = argparse.ArgumentParser(description="for cutmix")
+
+    parser.add_argument("save_dir", help="save directory")
+    parser.add_argument("data_dir", help="data directory")
+    frame = add_parallel_light(args.data_dir+"/lab_desk_3_img_000250.png", transparency=0.85)
     if frame is not None: 
         cv2.imshow("frame", frame)
-        cv2.imwrite("/home/tamaru/scene_categorize/main/data/example/add_light.png",frame)
+        cv2.imwrite(args.save_dir+"add_light.png",frame)
     else:
         print("False")

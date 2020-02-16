@@ -71,8 +71,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    # FG_IMG = "/home/tamaru/scene_categorize/main/data/dog.jpg"
-    # BG_IMG = "/home/tamaru/scene_categorize/main/data/lab_table_4_img_000230.png"
-    # save_dir = "/home/tamaru/scene_categorize/main/data"
     new_im = maskmix(args.BG_IMG, args.FG_IMG)
     new_im.save(args.save_dir,quality=95)

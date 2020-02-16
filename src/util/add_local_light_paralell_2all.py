@@ -6,6 +6,7 @@ import os
 import sys
 from glob import glob
 import shutil
+import argparse
 
 def generate_parallel_light_mask(mask_size,
                                  position=None,
@@ -178,6 +179,10 @@ def recursive_file_check(DATA_DIR, TARGET_DIR, itenum):
                 break
 
 if __name__ == '__main__':
-    data_dir_path = '/home/tamaru/scene_categorize/main/data/dataset/train'
-    save_dir_path = '/home/tamaru/scene_categorize/main/data/dataset/light'
+    parser = argparse.ArgumentParser(description="for cutmix")
+
+    parser.add_argument("save_dir", help="save directory")
+    parser.add_argument("data_dir", help="data directory")
+    data_dir_path = args.save_dir
+    save_dir_path = args.data_dir
     recursive_file_check(data_dir_path, save_dir_path, 0)

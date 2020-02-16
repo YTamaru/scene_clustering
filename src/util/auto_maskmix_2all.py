@@ -51,4 +51,3 @@ def auto_maskmix_2all(FG_IMG, BG_IMG, SPEC_BG_IMG):
     print("Foreground Size", foreground_.size[1])
     return back_im
 
-if __name__ =='__main__':

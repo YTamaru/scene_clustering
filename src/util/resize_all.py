@@ -6,6 +6,7 @@ import shutil
 import py360convert
 import numpy as np
 from PIL import Image
+import argparse
 
 
 def resize_frames(VIDEOS_DIR, TARGET_IMAGES_DIR):
@@ -56,6 +57,8 @@ def recursive_file_check(VIDEOS_DIR, TARGET_IMAGES_DIR, itenum):
     #     video_2_frames(path, TARGET_IMAGES_DIR)
 
 if __name__ == "__main__":
-    data_dir_path = '/home/tamaru/scene_categorize/main/data/insta_frames'
-    save_dir_path = '/home/tamaru/scene_categorize/main/data/insta_resized'
-    recursive_file_check(data_dir_path, save_dir_path, 0)
+    parser = argparse.ArgumentParser(description="for cutmix")
+    parser.add_argument("save_dir", help="save directory")
+    parser.add_argument("data_dir",help="data directory")
+
+    recursive_file_check(args.data_dir, args.save_dir, 0)

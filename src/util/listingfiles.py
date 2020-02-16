@@ -46,10 +46,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     
-    # path = '/home/tamaru/scene_categorize/main/data/insta_resized'
-    # csv_file = '/home/tamaru/scene_categorize/main/data/resized_data.csv'
     frames = []
     recursive_file_check(args.path, frames, args.csv)
 
 
-'/home/tamaru/scene_categorize/main/data/dataset/mix_img/lab' '/home/tamaru/scene_categorize/main/data/dataset/lab_mix_img.csv'

@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import random
 from scipy.stats import norm
+import argparse
 
 def generate_spot_light_mask(mask_size,
                              position=None,
@@ -102,9 +103,13 @@ def add_spot_light(image, light_position=None, max_brightness=255, min_brightnes
     return frame
 
 if __name__ == '__main__':
-    frame = add_spot_light("/home/tamaru/scene_categorize/main/data/insta_cube/lab/lab_table/3/lab_table_4_img_000220.png")
+    parser = argparse.ArgumentParser(description="for cutmix")
+
+    parser.add_argument("save_dir", help="save directory")
+    parser.add_argument("data_dir", help="data directory")
+    frame = add_spot_light(args.data_dir+"/lab_table_4_img_000220.png")
     if frame is not None: 
         cv2.imshow("frame", frame)
-        cv2.imwrite("/home/tamaru/scene_categorize/main/data/add_local_light.png",frame)
+        cv2.imwrite(args.save_dir+"/add_local_light.png",frame)
     else:
         print("False")

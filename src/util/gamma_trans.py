@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import random
 from scipy.stats import norm
+import argparse
 
 def gamma_trans(image, light_position=None, direction=None, max_brightness=255, min_brightness=0,
                        mode="gaussian", linear_decay_rate=None, transparency=None):
@@ -25,9 +26,12 @@ def gamma_trans(image, light_position=None, direction=None, max_brightness=255, 
 
 
 if __name__ == '__main__':
-    frame = gamma_trans("/home/tamaru/scene_categorize/main/data/example/lab_desk_3_img_000250.png")
+    parser = argparse.ArgumentParser(description="for cutmix")
+    parser.add_argument("save_dir", help="save directory")
+    parser.add_argument("data_dir",help="data directory")
+    frame = gamma_trans(args.data_dir+"/lab_desk_3_img_000250.png")
     if frame is not None: 
         cv2.imshow("frame", frame)
-        cv2.imwrite("/home/tamaru/scene_categorize/main/data/example/add_light.png",frame)
+        cv2.imwrite(args.save_dir+"/add_light.png",frame)
     else:
         print("False")
