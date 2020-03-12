@@ -91,7 +91,7 @@ def auto_maskmix(FG_IMG, BG_IMG, SPEC_BG_IMG):
     rotate = random.randint(0,360)
     size = (int(foreground.shape[1]*rate), int(foreground.shape[1]*rate))
     foreground_ = cv2.resize(foreground, size)
-    #前景画像の配置位置の座標は前景画像の左上なので，中心に平行移動する->未完成
+    #前景画像の配置位置の座標は前景画像の左上なので，中心に平行移動する
     point = (int(x-foreground_.shape[1]/2), int(y-foreground_.shape[0]/2))
     back_im = cv2OverlayImage.overlay(background ,foreground_, point)
     print("Foreground center coordinate", int(x-foreground_.shape[0]/2), int(y-foreground_.shape[1]/2))
