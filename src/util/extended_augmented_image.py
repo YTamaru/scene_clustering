@@ -5,7 +5,6 @@ from PIL import Image, ImageDraw, ImageFilter, ImageOps
 import random
 import os
 import argparse
-import auto_maskmix_util
 
 def make_augmented_image(train_csv, bg_mask_csv, mix_img_csv, save_dir, cls):
     bg_mask = pd.read_csv(bg_mask_csv)
@@ -84,10 +83,9 @@ def auto_maskmix(FG_IMG, BG_IMG, SPEC_BG_IMG):
     foreground = cv2.resize(foreground, (256,256))
     background = cv2.resize(background, (256,256))
     
-    coord = auto_maskmix_util.foreground_random_sampling(BG_IMG, SPEC_BG_IMG)
-    
     back_im = background.copy()
-    x, y = coord
+    x = np.random.randint(0,256)
+    y = np.random.randint(0,256)
     rate = np.random.rand()*0.2 + 0.2
     rotate = random.randint(0,360)
     size = (int(foreground.shape[1]*rate), int(foreground.shape[1]*rate))
